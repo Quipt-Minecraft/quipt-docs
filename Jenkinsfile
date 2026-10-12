@@ -40,7 +40,7 @@ pipeline {
                 sh '''
                     test -d build
                     test -f build/index.html
-                    rsync -rltv --delete build/ /var/www/html/
+                    rsync -rlv --delete build/ /var/www/html/
                 '''
             }
         }
