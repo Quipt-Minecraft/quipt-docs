@@ -1,43 +1,42 @@
-# Website
+# QUIPT Documentation Site (Docusaurus)
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-
-## Installation
-
-```bash
-npm install
-```
-
-**Note**: feel free to use the package manager of your choice.
+This directory contains the documentation suite for QUIPT, configured for execution with [Docusaurus](https://docusaurus.io/).
 
 ## Local Development
 
+To run this documentation locally:
+
 ```bash
+# Navigate to the documentation directory
+cd documentation
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+The site will open automatically at `http://localhost:3000`.
 
-## Build
+## Production Build
+
+To compile static assets for deployment:
 
 ```bash
 npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+The static website output will be located in `documentation/build/`.
 
-## Deployment
+## Directory Layout
 
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- `docs/`: Markdown / MDX documentation source files with Docusaurus frontmatter metadata.
+  - `core/`: Core runtime, lifecycle, server, configuration, event bus, and registries.
+  - `modules/`: Platform-specific integrations (Paper, Fabric, Velocity, Discord Bot, Common).
+  - `features/`: Server features (Resource pack management, command system, chat utils, parties).
+  - `developer/`: Developer guides, plugin creation, custom command creation, API reference.
+  - `operations/`: Building, testing, publishing, and security operations.
+- `src/css/`: Custom stylesheets and CSS variable overrides.
+- `docusaurus.config.js`: Central Docusaurus configuration (presets, themes, navbar, metadata).
+- `sidebars.js`: Navigation sidebar structure and categories.

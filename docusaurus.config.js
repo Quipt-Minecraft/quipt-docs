@@ -1,40 +1,30 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
+// Note: type annotations allow type checking and IDEs autocompletion
 
-import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Quick Solutions',
-  tagline: 'Fast Solutions by Quick',
+  title: 'QUIPT Documentation',
+  tagline: 'High-utility, multi-platform runtime and developer framework for Minecraft & Discord ecosystems',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
-
   // Set the production url of your site here
-  url: 'https://qsmc.live',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://docs.quipt.qsmc.live',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Quipt-Minecraft', // Usually your GitHub org/user name.
-  projectName: 'quipt', // Usually your repo name.
+  organizationName: 'Quipt-Minecraft',
+  projectName: 'quipt',
 
   onBrokenLinks: 'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -46,29 +36,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Quipt-Minecraft/quipt-docs/tree/master/',
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/Quipt-Minecraft/quipt/tree/master/documentation/',
+          routeBasePath: '/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Quipt-Minecraft/quipt-docs/tree/master/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -77,28 +51,29 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
-      colorMode: {
-        respectPrefersColorScheme: true,
-      },
+      image: 'img/quipt-social-card.jpg',
       navbar: {
-        title: 'Quick Solutions',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
+        title: 'QUIPT',
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'mainNavbar',
+            sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/Quipt-Minecraft/quipt',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://modrinth.com/plugin/QUIPT',
+            label: 'Modrinth',
+            position: 'right',
+          },
+          {
+            href: 'https://discord.gg/EhfMJmjTXh',
+            label: 'Discord Community',
             position: 'right',
           },
         ],
@@ -110,49 +85,75 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Introduction',
+                to: '/',
+              },
+              {
+                label: 'Architecture',
+                to: '/architecture',
+              },
+              {
+                label: 'Core Runtime',
+                to: '/core/lifecycle-and-runtime',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Services & Infrastructure',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'API Service',
+                href: 'https://api.qsmc.live',
               },
+              {
+                label: 'Jenkins CI',
+                href: 'https://ci.qsmc.live',
+              },
+              {
+                label: 'Nexus Maven Repo',
+                href: 'https://repo.qsmc.live',
+              },
+            ],
+          },
+          {
+            title: 'Community & Support',
+            items: [
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.gg/EhfMJmjTXh',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'GitHub Issues',
+                href: 'https://github.com/Quipt-Minecraft/quipt/issues',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Resources',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Modrinth',
+                href: 'https://modrinth.com/plugin/QUIPT',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Repository',
+                href: 'https://github.com/Quipt-Minecraft/quipt',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} QuickScythe. Built with Docusaurus for optimal community productivity and clarity.`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+        additionalLanguages: ['java', 'groovy', 'json', 'yaml', 'bash', 'properties', 'toml'],
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: true,
       },
     }),
 };
 
-export default config;
+module.exports = config;
