@@ -34,6 +34,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'modules/paper',
+        'modules/assembler',
         'modules/fabric',
         'modules/velocity',
         'modules/discord-bot',

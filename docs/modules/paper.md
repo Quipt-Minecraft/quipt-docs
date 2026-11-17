@@ -89,3 +89,9 @@ creator.createWorld();
 | `/party <create\|join\|leave\|disband>` | None (Public) | `PartyCommand` | Social party grouping. |
 | `/sudo <player> <command>` | `quipt.command.sudo` (OP 4) | `SudoCommand` | Execute commands on behalf of another user. |
 | `/resourcepack <update\|sync>` | `quipt.command.resourcepack` (OP 4) | `ResourcePackCommand` | Trigger Git pack re-sync. |
+
+---
+
+## Related
+
+- **[Structure Assembler](./assembler.md)** — Budget-based procedural structure generation using datapack-defined rooms (Paper module only).
